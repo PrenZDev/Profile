@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PrenZ</title>
+  <link rel="stylesheet" href="a1style.css">
+  <style>
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="favourite">
+    <h1>PrenZ</h1>
+  </div>
+
+  <div class="favourite">
+    <div class="subheading">
+      <h2>Current Status:
+      </h2>
+    </div>
+    <ul>
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6fCNwdojdA3mmZvNXdNb5L?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </ul>
+  </div>
+
+  <div class="favourite">
+    <h2>My favorite artists</h2>
+    <ul>
+      <li>Blink 182</li>
+      <li>Green Day</li>
+      <li>The Beatles</li>
+    </ul>
+  </div>
+
+  <div class="favourite">
+    <h2>My favorite artists</h2>
+    <ul>
+      <li>Blink 182</li>
+      <li>Green Day</li>
+      <li>The Beatles</li>
+    </ul>
+  </div>
+
+  <div class="favourite">
+    <h2>Contact:</h2>
+    <ul>
+      <div id="discord-profile">
+        <img id="avatar" src="" alt="Discord Avatar">
+        <h1 id="username"></h1>
+      </div>
+      <iframe src="https://discord.com/widget?id=1159255886783594536&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    </ul>
+  </div>
+
+  <script>
+    const botToken = '1141539189687595108';
+    
+    const userID = '1141539189687595108';
+    
+    const avatarElement = document.getElementById('avatar');
+    const usernameElement = document.getElementById('username');
+    
+    fetch(`https://discord.com/api/v10/users/${userID}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bot ${botToken}`,
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        avatarElement.src = `https://cdn.discordapp.com/avatars/${userID}/${data.avatar}.png`;
+        usernameElement.textContent = data.username;
+    })
+    .catch(error => {
+        console.error('Error fetching Discord user information: ' + error);
+    });
+</script>
+</body>
+</html>
